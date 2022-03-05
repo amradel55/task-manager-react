@@ -87,7 +87,6 @@ export default function AddTaskModal(props) {
         user: user,
         statge: statge
       }
-      console.log(type);
       if (type.requestType === 'add') {
         AuthPostApis('/tasks/create', task, (res, err) => {
           if(!err){
@@ -146,6 +145,7 @@ export default function AddTaskModal(props) {
             users = data
           }
         })
+
       }, [workflow_id])
 
     const body = (
@@ -171,6 +171,7 @@ export default function AddTaskModal(props) {
                 onChange={(e) => setColor(e.target.value)}
                 />
              </Grid>
+             {requestType == 'add' &&
              <Grid item xs={12} md={6} >
               <FormControl className={classes.formControl}>
                   <InputLabel id="demo-simple-select-label">Statge</InputLabel>
@@ -187,8 +188,8 @@ export default function AddTaskModal(props) {
                     ))}
                   </Select>
             </FormControl>
-             </Grid>
-             {requestType === 'edit' &&
+             </Grid>}
+             {requestType == 'add' &&
                 <Grid item xs={12} md={6} >
                 <FormControl className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">Asign to</InputLabel>
